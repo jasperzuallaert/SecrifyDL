@@ -5,8 +5,8 @@ https://www.biorxiv.org/content/10.1101/241349v4
 
 Packages used:
 ```
-tensorflow v1.5.0
-numpy v1.16.4
+tensorflow v1.10.0
+numpy v1.14.5
 sklearn v0.23.1
 ```
 

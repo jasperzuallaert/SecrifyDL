@@ -9,20 +9,21 @@ numpy v1.16.4
 sklearn v0.23.1
 ```
 
-(i) Create data files for cross-validation
+# (i) Create data files for cross-validation #
 
 From the results tables found online, and put in a directory `initial_data`, you can prepare the datafiles used in these scripts. This can be done by simply running
+
+Uses files:
+- `initial_data/Pp_resultstable_enriched.txt`
+- `initial_data/Pp_resultstable_depleted.txt`
+- `initial_data/Sc_resultstable_enriched.txt`
+- `initial_data/Sc_resultstable_depleted.txt`
 ```
-# Uses files:
-#   initial_data/Pp_resultstable_enriched.txt
-#   initial_data/Pp_resultstable_depleted.txt
-#   initial_data/Sc_resultstable_enriched.txt
-#   initial_data/Sc_resultstable_depleted.txt
-create_data_files.py
+python create_data_files.py
 ```
 The files containing the different folds for cross-validation are saved in the directory `data`.
 
-(ii) Train a convolutional neural network model
+# (ii) Train a convolutional neural network model #
 
 The neural network model is constructed and trained by executing the `main.py` script.
 
@@ -41,7 +42,7 @@ It is also possible to calculate the `AUROC` and `AUPRC` afterwards. To this end
 python eval.py <prediction_file>
 ```
 
-(iii) Visualize important input features using integrated gradients
+# (iii) Visualize important input features using integrated gradients #
 
 Using the model parameters (using the stored files with their original names), feature contribution can be calculated by running the following command. Note that output is written to `stdout`.
 

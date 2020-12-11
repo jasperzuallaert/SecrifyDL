@@ -1,0 +1,455 @@
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6524
+Number of negatives: 88122
+Valid set:
+Number of positives: 791
+Number of negatives: 11322
+Test set:
+Number of positives: 695
+Number of negatives: 10557
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.6837313   |    0.6837874   |    0.1289710   |    0.1225976   |    13.17s     |   0.00s   
+     1 |    0.2245554   |    0.2165816   |    0.2907933   |    0.2796967   |   26.04s     |   14.69s   -> New best valid.
+     2 |    0.2136109   |    0.2110474   |    0.3071386   |    0.2743556   |   25.47s     |   13.01s   -> New best valid.
+     3 |    0.2154433   |    0.2175857   |    0.3248133   |    0.2813430   |   29.85s     |   18.39s   
+     4 |    0.2036161   |    0.2165872   |    0.3479043   |    0.2688822   |   23.17s     |   14.53s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold0
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6389
+Number of negatives: 87421
+Valid set:
+Number of positives: 830
+Number of negatives: 11258
+Test set:
+Number of positives: 791
+Number of negatives: 11322
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.6995249   |    0.6996227   |    0.1275262   |    0.1285029   |    11.19s     |   0.00s   
+     1 |    0.2165826   |    0.2221768   |    0.2917401   |    0.2753759   |   29.15s     |   19.13s   -> New best valid.
+     2 |    0.2128354   |    0.2219965   |    0.2980352   |    0.2801656   |   26.78s     |   14.89s   -> New best valid.
+     3 |    0.2106085   |    0.2229476   |    0.3225385   |    0.2807253   |   27.81s     |   16.66s   
+     4 |    0.2034234   |    0.2263307   |    0.3616066   |    0.2640177   |   29.72s     |   18.89s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold1
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6363
+Number of negatives: 87702
+Valid set:
+Number of positives: 817
+Number of negatives: 11041
+Test set:
+Number of positives: 830
+Number of negatives: 11258
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.5764410   |    0.5770934   |    0.1386638   |    0.1495434   |    10.73s     |   0.00s   
+     1 |    0.2236893   |    0.2307683   |    0.2935809   |    0.2699961   |   30.70s     |   19.62s   -> New best valid.
+     2 |    0.2181694   |    0.2303226   |    0.3042078   |    0.2793881   |   26.54s     |   15.81s   -> New best valid.
+     3 |    0.2174118   |    0.2375329   |    0.3230955   |    0.2685590   |   25.55s     |   14.62s   
+     4 |    0.1968939   |    0.2246205   |    0.3729338   |    0.2706406   |   29.87s     |   18.31s   -> New best valid.
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold2
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6452
+Number of negatives: 88240
+Valid set:
+Number of positives: 741
+Number of negatives: 10720
+Test set:
+Number of positives: 817
+Number of negatives: 11041
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.6289491   |    0.6284689   |    0.1339330   |    0.1262191   |    11.28s     |   0.00s   
+     1 |    0.2163456   |    0.2093373   |    0.2952513   |    0.2776786   |   24.90s     |   14.12s   -> New best valid.
+     2 |    0.2118297   |    0.2081531   |    0.3076118   |    0.2756681   |   30.29s     |   18.75s   -> New best valid.
+     3 |    0.2094924   |    0.2121761   |    0.3245652   |    0.2749787   |   24.61s     |   15.59s   
+     4 |    0.1934105   |    0.2113304   |    0.3803704   |    0.2745263   |   18.31s     |   8.76s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold3
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6381
+Number of negatives: 88336
+Valid set:
+Number of positives: 888
+Number of negatives: 10945
+Test set:
+Number of positives: 741
+Number of negatives: 10720
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.5679008   |    0.5699852   |    0.1303892   |    0.1436319   |    9.13s     |   0.00s   
+     1 |    0.2287600   |    0.2433458   |    0.2877594   |    0.2911218   |   18.64s     |   9.06s   -> New best valid.
+     2 |    0.2100368   |    0.2331770   |    0.3093984   |    0.2883201   |   17.70s     |   8.58s   -> New best valid.
+     3 |    0.2100404   |    0.2349932   |    0.3321736   |    0.2994479   |   18.17s     |   9.27s   
+     4 |    0.1950489   |    0.2372869   |    0.3596688   |    0.2746051   |   17.93s     |   9.09s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold4
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6353
+Number of negatives: 88430
+Valid set:
+Number of positives: 769
+Number of negatives: 10626
+Test set:
+Number of positives: 888
+Number of negatives: 10945
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.9054793   |    0.9055185   |    0.1256328   |    0.1264387   |    9.58s     |   0.00s   
+     1 |    0.2457658   |    0.2469494   |    0.2847744   |    0.2858380   |   18.62s     |   9.21s   -> New best valid.
+     2 |    0.2110000   |    0.2163275   |    0.3068468   |    0.2919824   |   18.90s     |   9.60s   -> New best valid.
+     3 |    0.2103377   |    0.2191682   |    0.3190566   |    0.2940915   |   18.16s     |   9.06s   
+     4 |    0.1969881   |    0.2164938   |    0.3554773   |    0.2904742   |   18.82s     |   9.39s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold5
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6387
+Number of negatives: 88201
+Valid set:
+Number of positives: 854
+Number of negatives: 11174
+Test set:
+Number of positives: 769
+Number of negatives: 10626
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.8145046   |    0.8139532   |    0.1265066   |    0.1325881   |    9.50s     |   0.00s   
+     1 |    0.2216601   |    0.2331763   |    0.2906043   |    0.2739412   |   19.01s     |   9.49s   -> New best valid.
+     2 |    0.2132045   |    0.2309965   |    0.3022995   |    0.2857143   |   18.59s     |   9.29s   -> New best valid.
+     3 |    0.2116263   |    0.2359660   |    0.3258324   |    0.2582809   |   18.10s     |   8.95s   
+     4 |    0.1990772   |    0.2311162   |    0.3637082   |    0.2559715   |   19.09s     |   9.97s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold6
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6323
+Number of negatives: 87768
+Valid set:
+Number of positives: 833
+Number of negatives: 11059
+Test set:
+Number of positives: 854
+Number of negatives: 11174
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.7558568   |    0.7553772   |    0.1259386   |    0.1309234   |    9.36s     |   0.00s   
+     1 |    0.2159790   |    0.2254930   |    0.2918000   |    0.2810530   |   18.36s     |   8.96s   -> New best valid.
+     2 |    0.2092896   |    0.2239731   |    0.3104026   |    0.2834707   |   19.68s     |   9.99s   -> New best valid.
+     3 |    0.2039453   |    0.2238243   |    0.3319868   |    0.2804190   |   18.70s     |   9.21s   -> New best valid.
+     4 |    0.1958210   |    0.2272256   |    0.3693245   |    0.2708914   |   18.37s     |   8.72s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold7
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6385
+Number of negatives: 87643
+Valid set:
+Number of positives: 792
+Number of negatives: 11299
+Test set:
+Number of positives: 833
+Number of negatives: 11059
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.6004910   |    0.5997602   |    0.1704598   |    0.1621499   |    9.27s     |   0.00s   
+     1 |    0.2205799   |    0.2172264   |    0.2940533   |    0.2782241   |   19.54s     |   10.35s   -> New best valid.
+     2 |    0.2120387   |    0.2108326   |    0.3041847   |    0.2837466   |   18.45s     |   9.21s   -> New best valid.
+     3 |    0.2153985   |    0.2198254   |    0.3184956   |    0.2823846   |   18.21s     |   9.17s   
+     4 |    0.1982789   |    0.2129364   |    0.3703399   |    0.2667677   |   17.38s     |   8.62s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold8
+Network information:
+X_placeholder:0                     -> (?, 200, 20)
+conv1d/Relu:0                       -> (?, 200, 100)
+dropout/Identity:0                  -> (?, 200, 100)
+max_pooling1d/Squeeze:0             -> (?, 50, 100)
+conv1d_1/Relu:0                     -> (?, 50, 100)
+dropout_1/Identity:0                -> (?, 50, 100)
+max_pooling1d_1/Squeeze:0           -> (?, 12, 100)
+conv1d_2/Relu:0                     -> (?, 12, 100)
+dropout_2/Identity:0                -> (?, 12, 100)
+max_pooling1d_2/Squeeze:0           -> (?, 1, 100)
+Flatten/flatten/Reshape:0           -> (?, 100)
+dense/BiasAdd:0                     -> (?, 32)
+dropout_3/Identity:0                -> (?, 32)
+my_logits/BiasAdd:0                 -> (?, 1)
+This network has 149565 trainable parameters.
+session to be created
+Training set:
+Number of positives: 6523
+Number of negatives: 88145
+Valid set:
+Number of positives: 695
+Number of negatives: 10557
+Test set:
+Number of positives: 792
+Number of negatives: 11299
+ epoch |   train loss   |   valid loss   |    tr Fmax     |    va Fmax     |  total time  |  train time 
+-------+----------------+----------------+----------------+----------------+---------------------------
+     0 |    0.8829462   |    0.8866917   |    0.1289296   |    0.1163472   |    9.64s     |   0.00s   
+     1 |    0.2184988   |    0.2054229   |    0.2849109   |    0.2526464   |   18.32s     |   9.06s   -> New best valid.
+     2 |    0.2156272   |    0.2076563   |    0.3030592   |    0.2600760   |   18.43s     |   9.22s   
+     3 |    0.2093136   |    0.2059130   |    0.3252274   |    0.2572234   |   18.26s     |   9.11s   
+     4 |    0.2001649   |    0.2072207   |    0.3628615   |    0.2617267   |   18.04s     |   8.95s   
+Finished
+Parameters should've been stored in parameters/pp_201211_234123_fold9
+Threshold 0.01: TP 7851 FN 159 TN 14722 FP 95279
+Threshold 0.02: TP 7553 FN 457 TN 32906 FP 77095
+Threshold 0.03: TP 7181 FN 829 TN 46989 FP 63012
+Threshold 0.04: TP 6799 FN 1211 TN 57467 FP 52534
+Threshold 0.05: TP 6405 FN 1605 TN 65479 FP 44522
+Threshold 0.06: TP 6029 FN 1981 TN 71829 FP 38172
+Threshold 0.07: TP 5638 FN 2372 TN 76983 FP 33018
+Threshold 0.08: TP 5268 FN 2742 TN 81455 FP 28546
+Threshold 0.09: TP 4889 FN 3121 TN 85107 FP 24894
+Threshold 0.10: TP 4578 FN 3432 TN 88340 FP 21661
+Threshold 0.11: TP 4231 FN 3779 TN 91027 FP 18974
+Threshold 0.12: TP 3906 FN 4104 TN 93391 FP 16610
+Threshold 0.13: TP 3570 FN 4440 TN 95456 FP 14545
+Threshold 0.14: TP 3292 FN 4718 TN 97317 FP 12684
+Threshold 0.15: TP 2988 FN 5022 TN 98999 FP 11002
+Threshold 0.16: TP 2681 FN 5329 TN 100483 FP  9518
+Threshold 0.17: TP 2418 FN 5592 TN 101750 FP  8251
+Threshold 0.18: TP 2175 FN 5835 TN 102889 FP  7112
+Threshold 0.19: TP 1936 FN 6074 TN 103884 FP  6117
+Threshold 0.20: TP 1720 FN 6290 TN 104723 FP  5278
+Threshold 0.21: TP 1485 FN 6525 TN 105494 FP  4507
+Threshold 0.22: TP 1291 FN 6719 TN 106150 FP  3851
+Threshold 0.23: TP 1105 FN 6905 TN 106781 FP  3220
+Threshold 0.24: TP 946 FN 7064 TN 107278 FP  2723
+Threshold 0.25: TP 789 FN 7221 TN 107757 FP  2244
+Threshold 0.26: TP 627 FN 7383 TN 108148 FP  1853
+Threshold 0.27: TP 499 FN 7511 TN 108518 FP  1483
+Threshold 0.28: TP 403 FN 7607 TN 108834 FP  1167
+Threshold 0.29: TP 308 FN 7702 TN 109074 FP   927
+Threshold 0.30: TP 246 FN 7764 TN 109296 FP   705
+Threshold 0.31: TP 192 FN 7818 TN 109457 FP   544
+Threshold 0.32: TP 140 FN 7870 TN 109605 FP   396
+Threshold 0.33: TP 109 FN 7901 TN 109714 FP   287
+Threshold 0.34: TP  81 FN 7929 TN 109791 FP   210
+Threshold 0.35: TP  63 FN 7947 TN 109859 FP   142
+Threshold 0.36: TP  44 FN 7966 TN 109901 FP   100
+Threshold 0.37: TP  31 FN 7979 TN 109937 FP    64
+Threshold 0.38: TP  21 FN 7989 TN 109957 FP    44
+Threshold 0.39: TP  11 FN 7999 TN 109974 FP    27
+Threshold 0.40: TP   9 FN 8001 TN 109983 FP    18
+Threshold 0.41: TP   4 FN 8006 TN 109992 FP     9
+Threshold 0.42: TP   0 FN 8010 TN 109995 FP     6
+Threshold 0.43: TP   0 FN 8010 TN 109999 FP     2
+Threshold 0.44: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.45: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.46: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.47: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.48: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.49: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.50: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.51: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.52: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.53: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.54: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.55: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.56: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.57: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.58: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.59: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.60: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.61: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.62: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.63: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.64: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.65: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.66: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.67: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.68: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.69: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.70: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.71: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.72: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.73: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.74: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.75: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.76: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.77: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.78: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.79: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.80: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.81: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.82: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.83: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.84: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.85: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.86: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.87: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.88: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.89: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.90: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.91: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.92: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.93: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.94: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.95: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.96: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.97: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.98: TP   0 FN 8010 TN 110001 FP     0
+Threshold 0.99: TP   0 FN 8010 TN 110001 FP     0
+# of negatives: 110001
+# of positives: 8010
+-Fmax score: 0.27449345451513385
+-F1 score: 0.0
+-auROC: 0.7653509817712358
+-auPRC: 0.1841345909036827

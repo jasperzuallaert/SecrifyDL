@@ -2,17 +2,16 @@ __author__ = 'jasper.zuallaert'
 
 import numpy as np
 import tensorflow as tf
-from Layers import BidirectionalGRULayer
 MAX_LENGTH = 200
 
-def buildNetworkTopology(varlen_red_strategy):
+def build_network_topology(varlen_red_strategy):
     X_placeholder = tf.placeholder(tf.float32, [None, MAX_LENGTH, 20],name='X_placeholder')
     seqlen_ph = tf.placeholder(tf.int32, [None],name='seqlen_placeholder')
     dropout_placeholder = tf.placeholder(tf.float32,name='dropout_placeholder')
     is_training = tf.placeholder(tf.bool,name='is_train')
 
     return NetworkObject(
-            buildMyNetwork(varlen_red_strategy, dropout_placeholder),
+            build_my_network(varlen_red_strategy, dropout_placeholder),
             X_placeholder,
             seqlen_ph,
             dropout_placeholder
@@ -20,7 +19,7 @@ def buildNetworkTopology(varlen_red_strategy):
 
 
 # Prints the details of the neural network (layers and output shapes)
-def printNeuralNet(layers):
+def print_neural_net(layers):
     print('Network information:')
     for l in layers:
         try:
@@ -28,7 +27,7 @@ def printNeuralNet(layers):
         except AttributeError:
             pass
 
-def buildMyNetwork(varlen_red_strategy, dropout_placeholder):
+def build_my_network(varlen_red_strategy, dropout_placeholder):
     def network(X, seqlens):
         layers = []
         l = X
@@ -50,8 +49,8 @@ def buildMyNetwork(varlen_red_strategy, dropout_placeholder):
             layers.append(values)
         elif varlen_red_strategy == 'zero_padding':
             pass #do nothing special
-        elif varlen_red_strategy == 'GRU':
-            layers.append(BidirectionalGRULayer(layers[-1], seqlens, 512))
+        elif varlen_red_strategy == 'gru':
+            layers.append(bidirec_gru_layer(layers[-1], seqlens, 512))
         elif varlen_red_strategy == 'global_maxp':
             layers.append(tf.layers.max_pooling1d(layers[-1], int(layers[-1].shape[1]), int(layers[-1].shape[1])))
         else:
@@ -62,11 +61,20 @@ def buildMyNetwork(varlen_red_strategy, dropout_placeholder):
         layers.append(tf.layers.dropout(layers[-1], dropout_placeholder))
         layers.append(tf.layers.dense(layers[-1],1,name='my_logits'))
 
-        printNeuralNet(layers)
+        print_neural_net(layers)
         # The output layer here is returned as logits. Sigmoids are added in the TrainingProcedure.py file
-        return layers[-1],layers[-1]
+        return layers[-1]
 
     return network
+
+def bidirec_gru_layer(input, input_lengths, state_size):
+    cellsFW = [tf.nn.rnn_cell.GRUCell(state_size)]
+    cellsBW = [tf.nn.rnn_cell.GRUCell(state_size)]
+    multiFW = tf.nn.rnn_cell.MultiRNNCell(cellsFW)
+    multiBW = tf.nn.rnn_cell.MultiRNNCell(cellsBW)
+    _, (stateFW,stateBW) = tf.nn.bidirectional_dynamic_rnn(multiFW, multiBW, input, dtype=tf.float32, sequence_length=input_lengths)
+    lastCombined = tf.concat([stateFW[-1],stateBW[-1]],axis=1)
+    return lastCombined
 
 # Objects of this class hold a neural network tensor, as well as the placeholders used in that network
 class NetworkObject:

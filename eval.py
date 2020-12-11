@@ -1,7 +1,7 @@
 from sklearn.metrics import average_precision_score, roc_auc_score, f1_score
 def run_eval(predictions_save_dest):
     all_lines = open(predictions_save_dest).readlines()
-    labs = [int(line.split(',')[2]) for line in all_lines]
+    labs = [int(line.rstrip().split(',')[2]) for line in all_lines]
     preds = [float(line.split(',')[1]) for line in all_lines]
 
     fmax = 0

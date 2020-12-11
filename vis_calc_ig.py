@@ -23,9 +23,7 @@ def runIntegratedGradientsOnTestSet(predictions_logits,
     while not epoch_finished:
         ids, batch_x, lengths_x, batch_y, epoch_finished = test_dataset.next_batch(512)
         lengths_x = [min(x,MAX_LENGTH) for x in lengths_x] # max 1002 by default!
-        embedding_f = graph.get_tensor_by_name('embedding_f:0')
-        embedding_results = sess.run(embedding_f, feed_dict={X_ph: batch_x, seqlens_ph: lengths_x})
-        difference_part = embedding_results / num_integration_steps
+        difference_part = batch_x / num_integration_steps
 
         ### Calculate the gradients for each step
         allNucs = np.argmax(batch_x,axis=-1)
@@ -36,7 +34,7 @@ def runIntegratedGradientsOnTestSet(predictions_logits,
         # allPreds = [p[0] for p in sess.run(predictions_logits,feed_dict={X_ph: batch_x, seqlens_ph: lengths_x,dropout_ph: 0.0})]
         allIDs = [x.rstrip().split('\t')[0] for x in ids]
 
-        baseline = np.zeros_like(embedding_results)
+        baseline = np.zeros_like(X_ph)
         for step in range(1, num_integration_steps + 1):
             batch_x_for_this_step_1 = baseline + difference_part * (step - 1)
             batch_x_for_this_step_2 = baseline + difference_part * step

@@ -1,54 +1,5 @@
 proteins = 'ACDEFGHIKLMNPQRSTVWY'
 
-def nuc_firstmidlast_50(lines):
-    import numpy as np
-    first50 = np.zeros((50))
-    mid50 = np.zeros((50))
-    last50 = np.zeros((50))
-    for i in range(len(lines) // 3):
-        l3 = lines[3 * i + 2].strip().split(',')
-
-        if len(l3) >= 150:
-            for j in range(50):
-                first50[j] += abs(float(l3[j]))
-                last50[-(j + 1)] += abs(float(l3[-(j + 1)]))
-                mid50[j] += abs(float(l3[len(l3) // 2 - 25 + j]))
-
-    print('first50')
-    for score in first50:
-        print(score)
-    print('mid50')
-    for score in mid50:
-        print(score)
-    print('last50')
-    for score in last50:
-        print(score)
-
-
-def prot_firstmidlast_10(lines):
-    import numpy as np
-    first10 = np.zeros((10))
-    mid10 = np.zeros((10))
-    last10 = np.zeros((10))
-    for i in range(len(lines) // 3):
-        l3 = lines[3 * i + 2].strip().split(',')
-
-        if len(l3) >= 30:
-            for j in range(10):
-                first10[j] += abs(float(l3[j]))
-                last10[-(j + 1)] += abs(float(l3[-(j + 1)]))
-                mid10[j] += abs(float(l3[len(l3) // 2 - 5 + j]))
-
-    print('first10')
-    for score in first10:
-        print(score/(len(lines)//3))
-    print('mid10')
-    for score in mid10:
-        print(score/(len(lines)//3))
-    print('last10')
-    for score in last10:
-        print(score/(len(lines)//3))
-
 def prot_averagePerPosition(lines,n):
     import numpy as np
     first15 = np.zeros((n,20))
@@ -73,10 +24,10 @@ def prot_averagePerPosition(lines,n):
     for j in range(20):
         print(proteins[j],end=',')
         for i in range(n):
-            print(first15[i][j],end=',')
+            print(f'{first15[i][j]:.3f}',end=',')
         print(',',end='')
         for i in range(n):
-            print(last15[i][j],end=',')
+            print(f'{last15[i][j]:.3f}',end=',')
         print()
 
 def prot_getAveragePerAA(lines):
@@ -97,8 +48,8 @@ def prot_getAveragePerAA(lines):
     avgAbs = avgAbs / count
 
     print(','+','.join(proteins))
-    print('avg,'+','.join([str(x) for x in avgNml]))
-    print('avg (abs),'+','.join([str(x) for x in avgAbs]))
+    print('avg,'+','.join([f'{x:.3f}' for x in avgNml]))
+    print('avg (abs),'+','.join([f'{x:.3f}' for x in avgAbs]))
 
 def prot_getIndividualPatternGraphsPerAA(lines,divide_in_groups = 10):
     import numpy as np
@@ -116,11 +67,11 @@ def prot_getIndividualPatternGraphsPerAA(lines,divide_in_groups = 10):
                 scores[proteins.index(aa)][bin] += float(sct)
                 scores[20][bin] += abs(float(sct))
                 counts[20][bin] += 1
-    print(','+','.join([str(x) for x in range(divide_in_groups)]))
+    print(','+','.join([f'{x:.3f}' for x in range(divide_in_groups)]))
     scores = scores / counts
     for i in range(20):
-        print(proteins[i]+','+','.join([str(x) for x in scores[i]]))
-    print('all (abs val) per pos,'+','.join([str(x) for x in scores[20]]))
+        print(proteins[i]+','+','.join([f'{x:.3f}' for x in scores[i]]))
+    print('all (abs val) per pos,'+','.join([f'{x:.3f}' for x in scores[20]]))
 
 
 

@@ -1,7 +1,5 @@
 __author__ = 'jasper.zuallaert'
 import os
-import sys
-# hide tensorflow output
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import numpy as np
 import tensorflow as tf
@@ -12,7 +10,7 @@ import time
 TRAINING_BATCH_SIZE = 64
 VALIDATION_BATCH_SIZE = 512
 DROPOUT_RATE = 0.2
-N_EPOCHS = 10
+N_EPOCHS = 5
 
 class TrainingProcedure:
     def __init__(self, network_object, train_dataset, valid_dataset, test_dataset, is_training):
@@ -81,7 +79,7 @@ class TrainingProcedure:
         tr_loss, tr_Fmax, tr_avgPr, tr_avgSn = self._evaluate_set(self.train_dataset, VALIDATION_BATCH_SIZE)
         va_loss, va_Fmax, va_avgPr, va_avgSn = self._evaluate_set(self.valid_dataset, VALIDATION_BATCH_SIZE)
 
-        print(' {:5d} |   {: 2.7f}   |   {: 2.7f}   |   {: 2.7f}   |   {: 2.7f}   |   {:4.2f}s     |   {:4.2f}s   '.format(0,tr_loss,va_loss,tr_Fmax,va_Fmax,time.time()-t1,0))
+        print(' {:5d} |   {: 2.7f}   |   {: 2.7f}   |   {: 2.7f}   |   {: 2.7f}   |    {:4.2f}s     |   {:4.2f}s   '.format(0,tr_loss,va_loss,tr_Fmax,va_Fmax,time.time()-t1,0))
 
         ### train for each epoch ###
         for epoch in range(1,N_EPOCHS):
@@ -92,7 +90,7 @@ class TrainingProcedure:
             trainstart = time.time()
             while not epoch_finished:
                 ids, batch_x, lengths_x, batch_y, epoch_finished = self.train_dataset.next_batch(TRAINING_BATCH_SIZE)
-                sess.run(self.train_op, feed_dict={self.X_placeholder: batch_x, self.Y_placeholder: batch_y, self.seqlens_ph:lengths_x, self.dropout_placeholder:self.dropoutRate, self.isTraining:True})
+                sess.run(self.train_op, feed_dict={self.X_placeholder: batch_x, self.Y_placeholder: batch_y, self.seqlens_ph:lengths_x, self.dropout_placeholder:DROPOUT_RATE, self.is_training:True})
             trainstop = time.time()
 
             tr_loss, tr_Fmax, tr_avgPr, tr_avgSn = self._evaluate_set(self.train_dataset, VALIDATION_BATCH_SIZE)
@@ -150,29 +148,28 @@ class TrainingProcedure:
             loss_batch = self.sess.run(self.loss_f, feed_dict={self.X_placeholder: batch_x, self.Y_placeholder: batch_y,self.seqlens_ph:lengths_x, self.is_training:False})
             preds_batch = self.sess.run(self.sigmoid_f, feed_dict={self.X_placeholder: batch_x, self.Y_placeholder: batch_y,self.seqlens_ph:lengths_x, self.is_training:False})
             losses.extend([loss_batch] * len(batch_x))
-            all_preds.extend(preds_batch)
-            all_labels.extend(batch_y)
+            all_preds.append(preds_batch)
+            all_labels.append(batch_y)
             if epoch_finished:
                 batches_done = True
         # return np.average(losses),-1,-1,-1
         ### at the desired epochs (currently: all), do the calculations ###
-        batch_y_ph = tf.placeholder(tf.float32,shape=(None,1))
-        batch_preds_ph = tf.placeholder(tf.float32,shape=(None,1))
-        ph_t = tf.placeholder(tf.float32)
-        preds = tf.ceil(batch_preds_ph - ph_t)
-        tp_f = tf.reduce_sum((batch_y_ph + preds) // 2,axis=1)
-        number_of_pos_f = tf.reduce_sum(batch_y_ph,axis=1)
-        predicted_pos_f = tf.reduce_sum(preds,axis=1)
+        all_preds = tf.concat(all_preds,axis=0)
+        all_labels = tf.concat(all_labels,axis=0)
 
-        all_preds = tf.constant(all_preds)
-        all_labels = tf.constant(all_labels)
+        ph_t = tf.placeholder(tf.float32)
+        preds = tf.cast(tf.ceil(all_preds - ph_t),dtype=tf.int32)
+
+        tp_f = tf.reduce_sum((all_labels + preds) // 2,axis=1)
+        number_of_pos_f = tf.reduce_sum(all_labels,axis=1)
+        predicted_pos_f = tf.reduce_sum(preds,axis=1)
 
         ### for every threshold, calculate pr, sn, fscore ###
         for t in range(threshold_range):
             threshold = t/threshold_range
-            tp_res,n_of_pos_res,predicted_pos_res = self.sess.run([tp_f,number_of_pos_f,predicted_pos_f], feed_dict={batch_preds_ph:all_preds,batch_y_ph:all_labels,ph_t:threshold})
-            pr = tp_res/predicted_pos_res
-            sn = tp_res/n_of_pos_res
+            tp_res,n_of_pos_res,predicted_pos_res = self.sess.run([tp_f,number_of_pos_f,predicted_pos_f], feed_dict={ph_t:threshold})
+            pr = sum(tp_res)/sum(predicted_pos_res) if sum(predicted_pos_res)>0 else 0.0
+            sn = sum(tp_res)/sum(n_of_pos_res) if sum(n_of_pos_res)>0 else 0.0
             pr_per_thr.append(pr)
             sn_per_thr.append(sn)
             F_per_thr.append(2*pr*sn/(pr+sn) if pr+sn > 0 else 0.0)
@@ -204,7 +201,7 @@ class TrainingProcedure:
             ids, batch_x, lengths_x, batch_y, epoch_finished = self.test_dataset.next_batch(VALIDATION_BATCH_SIZE)
             sigmoids = self.sess.run(self.sigmoid_f, feed_dict={self.X_placeholder: batch_x, self.Y_placeholder: batch_y,self.seqlens_ph:lengths_x, self.is_training:False})
             for id,p,c in zip(ids,sigmoids,batch_y):
-                print(f'{id},{p},{c}',file=predictions_file)
+                print(f'{id},{p[0]},{c[0]}',file=predictions_file)
             if epoch_finished:
                 batches_done = True
 

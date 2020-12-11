@@ -1,6 +1,5 @@
 __author__ = 'jasper.zuallaert'
 import math
-from copy import deepcopy
 import numpy as np
 
 MAX_LENGTH = 200
@@ -22,7 +21,6 @@ def get_amino_acid_id(ngram):
 
 def get_sequences(datafiles):
     all_lines = []
-    print(datafiles)
     for filename in datafiles:
         f = open(filename)
         all_lines.extend(f.readlines())
@@ -38,6 +36,7 @@ def get_sequences(datafiles):
         labels.append(label)
         seqs.append(seq)
 
+    ids = np.asarray(ids)
     x_data = np.zeros((len(ids),MAX_LENGTH,20),np.float32)
     x_lengths = np.zeros(len(ids),np.int32)
     y_data = np.zeros((len(ids),1),np.int32)

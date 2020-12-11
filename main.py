@@ -3,12 +3,13 @@ from network_topology_constructor import build_network_topology
 from training_procedure import TrainingProcedure
 from input_manager import get_sequences
 import sys
-from datetime import time
+from datetime import datetime
+import os
 import tensorflow as tf
 
 dataset_loc = {
-    'pp': ('data/pp_perProtein/file_{}.dat'),
-    'sc': ('data/sc_perProtein/file_{}.dat')
+    'pp': ('data/pp_{}.dat'),
+    'sc': ('data/sc_{}.dat')
 }
 
 # The main script for running experiments. It combines calls to different python files.
@@ -24,7 +25,7 @@ def run(crossval_pt, dataset_name, predictions_file, varlen_red_strat, timestamp
     test_set = get_sequences(datafiles=test_files)
 
     ### Build the topology ###
-    nn, is_training = build_network_topology(varlen_red_strat = varlen_red_strat)
+    nn, is_training = build_network_topology(varlen_red_strategy = varlen_red_strat)
 
 
     ### Trains the network (and at the end, stores predictions on the test set) ###
@@ -39,8 +40,8 @@ def run(crossval_pt, dataset_name, predictions_file, varlen_red_strat, timestamp
 
 def get_filenames(datafile_template, i, n_of_folds):
     numbers = set(range(n_of_folds))
-    valid_num = i % n_of_folds
-    test_num = (i + 1) % n_of_folds
+    test_num = i % n_of_folds
+    valid_num = (i+1) % n_of_folds
     train_num = numbers - {valid_num} - {test_num}
 
     valid_files = [datafile_template.format(valid_num)]
@@ -52,12 +53,13 @@ def get_filenames(datafile_template, i, n_of_folds):
 # with <dataset> one of: sc, pp
 # with <varlen_reduction_strategy> one of: global_maxp, k_maxp, gru, zero_padding
 if __name__ == '__main__':
-    time = time()
-    timestamp = time.strftime('%y%m%d-%H%M%S')
+    timestamp = datetime.now().strftime('%y%m%d_%H%M%S')
     dataset_name = sys.argv[1]
     varlen_red_strat = sys.argv[2]
     assert dataset_name in ['pp','sc']
     assert varlen_red_strat in ['global_maxp', 'k_maxp', 'gru', 'zero_padding']
+    if not os.path.exists('predictions/'): os.mkdir('predictions')
+    if not os.path.exists('parameters/'): os.mkdir('parameters')
     predictions_filename = 'predictions/{}_{}.txt'.format(dataset_name,timestamp)
     predictions_file = open(predictions_filename,'w')
 

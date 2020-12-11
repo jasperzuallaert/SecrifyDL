@@ -1,6 +1,7 @@
-# SecrifyDL
+# Massively parallel interrogation of protein fragment secretability using SECRiFY reveals features influencing secretory system transit
 
-This is the python code for training, evaluating and visualizing a convolutional neural network for secretability prediction
+This is the python code for training, evaluating and visualizing a convolutional neural network for secretability prediction. The corresponding paper can be found at 
+```https://www.biorxiv.org/content/10.1101/241349v4```
 
 Packages used:
 ```
